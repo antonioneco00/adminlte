@@ -7,5 +7,7 @@ $(window).on("load", function () {
         initialView: "dayGridMonth",
     });
 
+    fullCalendar.addEvent({title: 'Hola', start: '2023-03-23'})
+
     fullCalendar.render();
 });

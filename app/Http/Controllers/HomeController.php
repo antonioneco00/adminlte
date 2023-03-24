@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
+
+    public function xlsx_json()
+    {
         $reader = new XlsxReader();
         $sheets = $reader->load('../Eventos.xlsx');
         $sheet = $sheets->getActiveSheet();
@@ -31,16 +37,22 @@ class HomeController extends Controller
         // Recorrer esto y por cada vez obtener todos los valores
         $value = $sheet->getCell('A2')->getValue();
 
-        return view('home');
-    }
+        $rows = $sheet->getHighestRow();
 
-    /* public function xlsx_json()
-    {
-        $reader = new XlsxReader();
-        $reader->load('../Eventos.xlsx');
-        
-        return response()->json([
-            'Clave' => 'Valor'
-        ]);
-    } */
+        $events = [];
+
+        for ($i = 2; $i <= $rows; $i++) {
+            $inicio = ($sheet->getCell("B$i")->getValue() - 25569) * 86400;
+            $fin = ($sheet->getCell("C$i")->getValue() - 25569) * 86400;
+
+            array_push($events, [
+                "Titulo" => $sheet->getCell("A$i")->getValue(),
+                "Inicio" => date('Y-m-d H:m', $inicio),
+                "Fin" => date('Y-m-d H:m', $fin),
+                "Tipo" => $sheet->getCell("D$i")->getValue(),
+            ]);
+        }
+
+        return response()->json($events);
+    }
 }

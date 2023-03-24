@@ -30,18 +30,23 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" id="email">
+                            <label for="background_color">Color de fondo</label>
+                            <input type="color" name="background_color" class="form-control" id="background_color">
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input type="password" name="password" class="form-control" id="password">
+                            <label for="text_color">Color de texto</label>
+                            <input type="color" name="text_color" class="form-control" id="text_color">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="border_color">Color de borde</label>
+                            <input type="color" name="border_color" class="form-control" id="border_color">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-eventType">Save
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-event-type">Save
                             changes</button>
                     </div>
                 </form>
@@ -81,7 +86,7 @@
             <th>Acciones</th>
         </tr>
         @foreach ($eventTypes as $eventType)
-            <tr>
+            <tr id="eventType--{{$eventType->id}}">
                 <td>{{ $eventType->id }}</td>
                 <td>{{ $eventType->name }}</td>
                 <td>{{ $eventType->background_color }}</td>

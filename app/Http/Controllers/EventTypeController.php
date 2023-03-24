@@ -20,4 +20,33 @@ class EventTypeController extends Controller
             'eventTypes' => $eventTypes
         ]);
     }
+
+    public function save(Request $request)
+    {
+        $eventType = new EventType();
+
+        $eventType->name = $request->name;
+        $eventType->background_color = $request->background_color;
+        $eventType->text_color = $request->text_color;
+        $eventType->border_color = $request->border_color;
+
+        $eventType->save();
+
+        return response()->json([
+            'message' => 'Tipo de evento creado con exito',
+            'data' => $eventType
+        ]);
+    }
+
+    public function delete($id)
+    {
+        $eventType = EventType::find($id);
+
+        $eventType->delete();
+
+        return response()->json([
+            'message' => 'Tipo de evento eliminado con exito',
+            'data' => $eventType
+        ]);
+    }
 }

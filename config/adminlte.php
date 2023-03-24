@@ -314,8 +314,8 @@ return [
         ],
         [
             'text'        => 'Tipos de Eventos',
-            'url'         => 'users',
-            'icon'        => 'far fa-fw fa-calendar',
+            'url'         => 'event-types',
+            'icon'        => 'fas fa-fw fa-table',
         ],
     ],
 

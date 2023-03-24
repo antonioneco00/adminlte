@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Usuarios')
+@section('title', 'Tipos de eventos')
 
 @section('content_header')
-    <h1>Panel de Usuarios</h1>
+    <h1>Todos los tipos de eventos</h1>
 @stop
 
 @section('content')
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#createModal">
-        Añadir Usuario
+        Añadir tipo de evento
     </button>
 
     <!-- Modal Crear -->
@@ -17,7 +17,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir Usuario</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir Tipo de Evento</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-user">Save
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-eventType">Save
                             changes</button>
                     </div>
                 </form>
@@ -61,30 +61,34 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿Seguro que quieres eliminar el usuario?
+                    ¿Seguro que quieres eliminar el tipo de evento?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="deleteBtn btn btn-danger" data-dismiss="modal">Delete user</button>
+                    <button type="button" class="deleteBtn btn btn-danger" data-dismiss="modal">Delete eventType</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <table class="table" id="usersTable">
+    <table class="table" id="eventTypesTable">
         <tr>
             <th>Id</th>
             <th>Nombre</th>
-            <th>Email</th>
+            <th>Color de fondo</th>
+            <th>Color de texto</th>
+            <th>Borde</th>
             <th>Acciones</th>
         </tr>
-        @foreach ($users as $user)
+        @foreach ($eventTypes as $eventType)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
+                <td>{{ $eventType->id }}</td>
+                <td>{{ $eventType->name }}</td>
+                <td>{{ $eventType->background_color }}</td>
+                <td>{{ $eventType->text_color }}</td>
+                <td>{{ $eventType->border_color }}</td>
                 <td><button data-toggle="modal" data-target="#deleteModal" class="showDeleteModal"
-                        data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button></td>
+                        data-id="{{ $eventType->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button></td>
             </tr>
         @endforeach
     </table>
@@ -95,5 +99,5 @@
 @stop
 
 @section('js')
-    <script type="module" src={{ asset('js/user.js') }}></script>
+    <script type="module" src={{ asset('js/eventType.js') }}></script>
 @stop

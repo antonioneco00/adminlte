@@ -25,4 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware('auth');
 
 // Tipos de eventos
-Route::get('/event-types', [App\Http\Controllers\UserController::class, 'index'])->name('event-types')->middleware('auth');
+Route::get('/event-types', [App\Http\Controllers\EventTypeController::class, 'index'])->name('event-types')->middleware('auth');

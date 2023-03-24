@@ -25958,15 +25958,19 @@ var n,t,r,u,o=require("preact"),i=0,f=[],c=[],e=o.options.__b,a=o.options.__r,v=
 
 },{"preact":16}],18:[function(require,module,exports){
 const $ = require("jquery");
-const Calendar = require("fullcalendar");
+const { Calendar } = require("fullcalendar");
 
 $(window).on("load", function () {
     const myCalendar = document.querySelector("#calendar");
-    const fullCalendar = new Calendar.Calendar(myCalendar, {
-        initialView: "dayGridMonth",
+    const fullCalendar = new Calendar(myCalendar, {
+        events: [
+            {
+                title: "Si",
+                start: "2023-03-23 18:00",
+            },
+        ],
+        initialView: "timeGridDay",
     });
-
-    fullCalendar.addEvent({title: 'Hola', start: '2023-03-23'})
 
     fullCalendar.render();
 });

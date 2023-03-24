@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/xlsx-json', 'App\Http\Controllers\HomeController@xlsx_json');
+Route::post('/users', 'App\Http\Controllers\UserController@save');
+Route::delete('/users/{id}', 'App\Http\Controllers\UserController@delete');

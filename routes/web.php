@@ -19,4 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+// Usuarios
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware('auth');
+
+// Tipos de eventos
+Route::get('/event-types', [App\Http\Controllers\UserController::class, 'index'])->name('event-types')->middleware('auth');

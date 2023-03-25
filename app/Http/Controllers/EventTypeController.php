@@ -21,6 +21,16 @@ class EventTypeController extends Controller
         ]);
     }
 
+    public function get()
+    {
+        $eventTypes = EventType::get();
+
+        return response()->json([
+            'message' => 'Tipos de eventos obtenidos con exito',
+            'data' => $eventTypes
+        ]);
+    }
+
     public function save(Request $request)
     {
         $eventType = new EventType();

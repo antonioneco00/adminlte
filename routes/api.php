@@ -26,6 +26,7 @@ Route::put('/users', 'App\Http\Controllers\UserController@update');
 Route::delete('/users/{id}', 'App\Http\Controllers\UserController@delete');
 
 // Tipos de eventos
+Route::get('/event-types', 'App\Http\Controllers\EventTypeController@get');
 Route::post('/event-types', 'App\Http\Controllers\EventTypeController@save');
 Route::put('/event-types', 'App\Http\Controllers\EventTypeController@update');
 Route::delete('/event-types/{id}', 'App\Http\Controllers\EventTypeController@delete');

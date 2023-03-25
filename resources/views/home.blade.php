@@ -37,8 +37,6 @@
         </div>
     </div>
 
-    <p>Welcome to this beautiful admin panel.</p>
-
     <div id="calendar"></div>
 @stop
 

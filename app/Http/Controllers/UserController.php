@@ -49,6 +49,23 @@ class UserController extends Controller
         ]);
     }
 
+    public function update(Request $request)
+    {
+        $id = $request->id;
+
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        $user->update();
+        
+        return response()->json([
+            'message' => 'Usuario editado con exito',
+            'data' => $user
+        ]);
+    }
+
     public function delete($id)
     {
         $user = User::find($id);

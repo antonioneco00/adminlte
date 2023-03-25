@@ -22,6 +22,7 @@ Route::get('/xlsx-json', 'App\Http\Controllers\HomeController@xlsx_json');
 
 // Usuarios
 Route::post('/users', 'App\Http\Controllers\UserController@save');
+Route::put('/users', 'App\Http\Controllers\UserController@update');
 Route::delete('/users/{id}', 'App\Http\Controllers\UserController@delete');
 
 // Tipos de eventos

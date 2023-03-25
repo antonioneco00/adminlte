@@ -49,6 +49,39 @@
         </div>
     </div>
 
+    <!-- Modal Editar -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" id="edit-nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="edit-email">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="editBtn btn btn-primary" data-dismiss="modal" id="update-user">Save
+                            changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Eliminar -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -79,12 +112,16 @@
             <th>Acciones</th>
         </tr>
         @foreach ($users as $user)
-            <tr id="user--{{$user->id}}">
+            <tr id="user--{{ $user->id }}">
                 <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td><button data-toggle="modal" data-target="#deleteModal" class="showDeleteModal"
-                        data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button></td>
+                <td id="username--{{ $user->id }}">{{ $user->name }}</td>
+                <td id="email--{{ $user->id }}">{{ $user->email }}</td>
+                <td>
+                    <button data-toggle="modal" data-target="#editModal" class="showEditModal"
+                        data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-edit"></i></button>
+                    <button data-toggle="modal" data-target="#deleteModal" class="showDeleteModal"
+                        data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button>
+                </td>
             </tr>
         @endforeach
     </table>

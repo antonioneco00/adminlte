@@ -59,8 +59,8 @@ $(window).on("load", function () {
             .getEvents()
             .find((event) => event.title === title);
 
-        const start = selectedEvent.start.toLocaleString('es-ES');
-        const end = selectedEvent.end.toLocaleString('es-ES');
+        const start = selectedEvent.start.toLocaleString("es-ES");
+        const end = selectedEvent.end.toLocaleString("es-ES");
         const type = selectedEvent.extendedProps.type;
 
         $("#eventTitle").html(title);

@@ -89,7 +89,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="editBtn btn btn-primary" data-dismiss="modal" id="update-event-type">Save
+                        <button type="button" class="editBtn btn btn-primary" data-dismiss="modal"
+                            id="update-event-type">Save
                             changes</button>
                     </div>
                 </form>
@@ -120,28 +121,36 @@
         </div>
     </div>
 
-    <table class="table" id="eventTypesTable">
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Color de fondo</th>
-            <th>Color de texto</th>
-            <th>Borde</th>
-            <th>Acciones</th>
-        </tr>
-        @foreach ($eventTypes as $eventType)
-            <tr id="eventType--{{ $eventType->id }}">
-                <td>{{ $eventType->id }}</td>
-                <td id="name--{{ $eventType->id }}">{{ $eventType->name }}</td>
-                <td id="background_color--{{ $eventType->id }}">{{ $eventType->background_color }}</td>
-                <td id="text_color--{{ $eventType->id }}">{{ $eventType->text_color }}</td>
-                <td id="border_color--{{ $eventType->id }}">{{ $eventType->border_color }}</td>
-                <td><button data-toggle="modal" data-target="#editModal" class="showEditModal"
-                        data-id="{{ $eventType->id }}"><i class="fas fa-fw fa-solid fa-edit"></i></button><button
-                        data-toggle="modal" data-target="#deleteModal" class="showDeleteModal"
-                        data-id="{{ $eventType->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button></td>
+    <table class="table table-striped table-bordered" id="eventTypesTable">
+        <thead class="bg-primary">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Color de fondo</th>
+                <th>Color de texto</th>
+                <th>Borde</th>
+                <th>Acciones</th>
             </tr>
-        @endforeach
+        </thead>
+        <tbody>
+            @foreach ($eventTypes as $eventType)
+                <tr id="eventType--{{ $eventType->id }}">
+                    <td>{{ $eventType->id }}</td>
+                    <td id="name--{{ $eventType->id }}">{{ $eventType->name }}</td>
+                    <td id="background_color--{{ $eventType->id }}"><i class="fa fa-fw fa-square"
+                            style="color: {{ $eventType->background_color }}"></i><span>{{ $eventType->background_color }}</span>
+                    </td>
+                    <td id="text_color--{{ $eventType->id }}"><i class="fa fa-fw fa-square"
+                            style="color: {{ $eventType->text_color }}"></i><span>{{ $eventType->text_color }}</span></td>
+                    <td id="border_color--{{ $eventType->id }}"><i class="fa fa-fw fa-square"
+                        style="color: {{ $eventType->border_color }}"></i><span>{{ $eventType->border_color }}</span></td>
+                    <td><button data-toggle="modal" data-target="#editModal" class="showEditModal"
+                            data-id="{{ $eventType->id }}"><i class="fas fa-fw fa-solid fa-edit"></i></button><button
+                            data-toggle="modal" data-target="#deleteModal" class="showDeleteModal"
+                            data-id="{{ $eventType->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button></td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
 @stop
 

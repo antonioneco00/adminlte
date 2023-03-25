@@ -25,9 +25,12 @@ $(window).on("load", function () {
                     <tr id="eventType--${data.id}">
                         <td>${data.id}</td>
                         <td id="name--${data.id}">${data.name}</td>
-                        <td id="background_color--${data.id}">${data.background_color}</td>
-                        <td id="text_color--${data.id}">${data.text_color}</td>
-                        <td id="border_color--${data.id}">${data.border_color}</td>
+                        <td id="background_color--${data.id}"><i class="fa fa-fw fa-square"
+                        style="color: ${data.background_color}"></i>${data.background_color}</td>
+                        <td id="text_color--${data.id}"><i class="fa fa-fw fa-square"
+                        style="color: ${data.text_color}"></i>${data.text_color}</td>
+                        <td id="border_color--${data.id}"><i class="fa fa-fw fa-square"
+                        style="color: ${data.border_color}"></i>${data.border_color}</td>
                         <td><button data-toggle="modal" data-target="#editModal" class="showEditModal" data-id="${data.id}"><i class="fas fa-fw fa-solid fa-edit"></i></button><button data-toggle="modal" data-target="#deleteModal" class="showDeleteModal" data-id="${data.id}"><i class="fas fa-fw fa-solid fa-trash"></i></button></td>
                     </tr>
                 `);
@@ -39,9 +42,9 @@ $(window).on("load", function () {
         const id = $(this).data("id");
 
         const currentName = $(`#name--${id}`).html();
-        const currentBackgroundColor = $(`#background_color--${id}`).html();
-        const currentTextColor = $(`#text_color--${id}`).html();
-        const currentBorderColor = $(`#border_color--${id}`).html();
+        const currentBackgroundColor = $(`#background_color--${id} span`).html();
+        const currentTextColor = $(`#text_color--${id} span`).html();
+        const currentBorderColor = $(`#border_color--${id} span`).html();
 
         $("#edit-nombre").val(currentName);
         $("#edit-background_color").val(currentBackgroundColor);
@@ -70,9 +73,12 @@ $(window).on("load", function () {
             },
             complete: function () {
                 $(`#name--${id}`).html(name);
-                $(`#background_color--${id}`).html(background_color);
-                $(`#text_color--${id}`).html(text_color);
-                $(`#border_color--${id}`).html(border_color);
+                $(`#background_color--${id}`).html(`<i class="fa fa-fw fa-square"
+                style="color: ${background_color}"></i><span>${background_color}`);
+                $(`#text_color--${id}`).html(`<i class="fa fa-fw fa-square"
+                style="color: ${text_color}"></i><span>${text_color}`);
+                $(`#border_color--${id}`).html(`<i class="fa fa-fw fa-square"
+                style="color: ${border_color}"></i><span>${border_color}`);
             },
         });
     });

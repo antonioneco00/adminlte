@@ -104,26 +104,30 @@
         </div>
     </div>
 
-    <table class="table" id="usersTable">
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Acciones</th>
-        </tr>
-        @foreach ($users as $user)
-            <tr id="user--{{ $user->id }}">
-                <td>{{ $user->id }}</td>
-                <td id="username--{{ $user->id }}">{{ $user->name }}</td>
-                <td id="email--{{ $user->id }}">{{ $user->email }}</td>
-                <td>
-                    <button data-toggle="modal" data-target="#editModal" class="showEditModal"
-                        data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-edit"></i></button>
-                    <button data-toggle="modal" data-target="#deleteModal" class="showDeleteModal"
-                        data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button>
-                </td>
+    <table class="table table-striped table-bordered" id="usersTable">
+        <thead class="bg-primary">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Acciones</th>
             </tr>
-        @endforeach
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
+                <tr id="user--{{ $user->id }}">
+                    <td>{{ $user->id }}</td>
+                    <td id="username--{{ $user->id }}">{{ $user->name }}</td>
+                    <td id="email--{{ $user->id }}">{{ $user->email }}</td>
+                    <td>
+                        <button data-toggle="modal" data-target="#editModal" class="showEditModal"
+                            data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-edit"></i></button>
+                        <button data-toggle="modal" data-target="#deleteModal" class="showDeleteModal"
+                            data-id="{{ $user->id }}"><i class="fas fa-fw fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
 @stop
 

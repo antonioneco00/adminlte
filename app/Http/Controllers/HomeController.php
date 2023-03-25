@@ -34,9 +34,6 @@ class HomeController extends Controller
         $sheets = $reader->load('../Eventos.xlsx');
         $sheet = $sheets->getActiveSheet();
 
-        // Recorrer esto y por cada vez obtener todos los valores
-        $value = $sheet->getCell('A2')->getValue();
-
         $rows = $sheet->getHighestRow();
 
         $events = [];

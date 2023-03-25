@@ -303,9 +303,9 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Inicio',
+            'url'         => 'home',
+            'icon'        => 'far fa-fw fa-calendar',
         ],
         [
             'text'        => 'Usuarios',

@@ -37,6 +37,25 @@ class EventTypeController extends Controller
             'data' => $eventType
         ]);
     }
+    
+    public function update(Request $request)
+    {
+        $id = $request->id;
+
+        $eventType = EventType::find($id);
+
+        $eventType->name = $request->name;
+        $eventType->background_color = $request->background_color;
+        $eventType->text_color = $request->text_color;
+        $eventType->border_color = $request->border_color;
+
+        $eventType->update();
+        
+        return response()->json([
+            'message' => 'Tipo de evento editado con exito',
+            'data' => $eventType
+        ]);
+    }
 
     public function delete($id)
     {
